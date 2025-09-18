@@ -1,0 +1,11 @@
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\bin\Debug\net9.0\PredictorActivos.BusinessLogic.deps.json
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\bin\Debug\net9.0\PredictorActivos.BusinessLogic.dll
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\bin\Debug\net9.0\PredictorActivos.BusinessLogic.pdb
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\PredictorActivos.BusinessLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\PredictorActivos.BusinessLogic.AssemblyInfoInputs.cache
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\PredictorActivos.BusinessLogic.AssemblyInfo.cs
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\PredictorActivos.BusinessLogic.csproj.CoreCompileInputs.cache
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\PredictorActivos.BusinessLogic.dll
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\refint\PredictorActivos.BusinessLogic.dll
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\PredictorActivos.BusinessLogic.pdb
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\ref\PredictorActivos.BusinessLogic.dll

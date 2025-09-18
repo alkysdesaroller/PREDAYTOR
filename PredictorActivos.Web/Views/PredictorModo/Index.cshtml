@@ -1,0 +1,91 @@
+﻿@model PredictorActivos.ViewModel.PredictionModoViewModel
+@{
+    ViewData["Title"] = "Modos";
+}
+
+<div class="row">
+    <h1 class="text-center">Modos de predicción</h1>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header bg-info text-white text-center">
+                <h3><i class="fas fa-cogs me-2"></i>Configuración de Algoritmos</h3>
+                <p class="mb-0">Selecciona el modo de predicción que deseas usar</p>
+            </div>
+            <div class="card-body p-4">
+                @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+                {
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle me-2"></i>
+                        <strong>¡Guardado!</strong> @Model.SuccessMessage
+                    </div>
+                }
+
+                <form asp-action="Index" method="post">
+                    <div class="mb-4">
+                        <label asp-for="SelectedModo" class="form-label fw-bold fs-5">
+                            <i class="fas fa-chart-line me-2"></i>Modo de Predicción:
+                        </label>
+                        <select asp-for="SelectedModo" asp-items="Model.ModosAvailable" 
+                                class="form-select form-select-lg">
+                        </select>
+                    </div>
+
+                    <!-- Información de los modos -->
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="card h-100 border-primary">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-chart-area fa-3x text-primary mb-3"></i>
+                                    <h6 class="fw-bold">SMA Crossover</h6>
+                                    <p class="small text-muted">
+                                        Compara medias móviles de 5 días (corta) vs 20 días (larga) 
+                                        para detectar cruces alcistas o bajistas.
+                                    </p>
+                                    <span class="badge bg-primary">Fácil de entender</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-success">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-chart-line fa-3x text-success mb-3"></i>
+                                    <h6 class="fw-bold">Regresión Lineal</h6>
+                                    <p class="small text-muted">
+                                        Usa matemáticas para calcular la tendencia y 
+                                        predecir el valor exacto del día 21.
+                                    </p>
+                                    <span class="badge bg-success">Predicción numérica</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card h-100 border-warning">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-tachometer-alt fa-3x text-warning mb-3"></i>
+                                    <h6 class="fw-bold">Momentum (ROC)</h6>
+                                    <p class="small text-muted">
+                                        Calcula la velocidad de cambio en períodos de 5 días 
+                                        para medir la aceleración del precio.
+                                    </p>
+                                    <span class="badge bg-warning">Análisis avanzado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success btn-lg px-5 me-3">
+                            <i class="fas fa-save me-2"></i>Guardar Modo
+                        </button>
+                        <a asp-controller="Predictor" asp-action="Index" class="btn btn-primary btn-lg px-5">
+                            <i class="fas fa-home me-2"></i>Volver al Predictor
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

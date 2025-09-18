@@ -1,0 +1,132 @@
+﻿@model PredictorActivos.ViewModel.PredictionResultViewModel
+@{
+    ViewData["Title"] = "Resultado";
+}
+
+<div class="row">
+    <h1 class="text-center">Resultado de la Predicción</h1>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-10">
+        @if (Model.IsSuccess)
+        {
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white text-center">
+                    <h3><i class="fas fa-chart-area me-2"></i>Análisis Completado</h3>
+                    <p class="mb-0">Método utilizado: <strong>@Model.Modo</strong></p>
+                </div>
+                <div class="card-body p-4">
+                    <!-- Resultado Principal -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="card @(Model.Tendencia.Contains("Alcista") ? "border-success bg-light-success" : "border-danger bg-light-danger")">
+                                <div class="card-body text-center">
+                                    <h4><i class="fas fa-trending-up me-2"></i>Tendencia</h4>
+                                    <h2 class="@(Model.Tendencia.Contains("Alcista") ? "text-success" : "text-danger")">
+                                        <i class="fas fa-@(Model.Tendencia.Contains("Alcista") ? "arrow-up" : "arrow-down") me-2"></i>
+                                        @Model.Tendencia
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                    <h4><i class="fas fa-info-circle me-2"></i>Detalles</h4>
+                                    <p class="fs-6">@Model.Detalles</p>
+                                    @if (Model.ValorFuturo.HasValue)
+                                    {
+                                        <div class="alert alert-primary">
+                                            <h5>
+                                                <i class="fas fa-crystal-ball me-2"></i>
+                                                Valor Predicho (Día 21):
+                                            </h5>
+                                            <h3 class="text-primary mb-0">$@Model.ValorFuturo.Value.ToString("F2")</h3>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cálculos Detallados -->
+                    @if (Model.Calculos != null && Model.Calculos.Any())
+                    {
+                        <div class="card mb-4">
+                            <div class="card-header bg-light">
+                                <h5><i class="fas fa-calculator me-2"></i>Cálculos Paso a Paso</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    @foreach (var calculo in Model.Calculos)
+                                    {
+                                        <div class="col-md-6 mb-2">
+                                            <div class="alert alert-light border-left-primary">
+                                                <small><i class="fas fa-chevron-right me-2"></i>@calculo</small>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Interpretación -->
+                    <div class="alert alert-info">
+                        <h6><i class="fas fa-lightbulb me-2"></i>¿Qué significa este resultado?</h6>
+                        @if (Model.Modo.Contains("SMA"))
+                        {
+                            <p class="mb-0">
+                                <strong>SMA Crossover:</strong> Se compararon las medias móviles. 
+                                Tendencia <strong>alcista</strong> = el precio promedio reciente está subiendo más rápido que el histórico.
+                            </p>
+                        }
+                        else if (Model.Modo.Contains("Regresión"))
+                        {
+                            <p class="mb-0">
+                                <strong>Regresión Lineal:</strong> Calculamos matemáticamente hacia dónde va el precio. 
+                                El número mostrado es la predicción exacta para mañana.
+                            </p>
+                        }
+                        else if (Model.Modo.Contains("Momentum"))
+                        {
+                            <p class="mb-0">
+                                <strong>Momentum:</strong> Medimos qué tan rápido cambia el precio. 
+                                Valores positivos = está acelerando hacia arriba.
+                            </p>
+                        }
+                    </div>
+
+                    <div class="text-center">
+                        <a asp-controller="Predictor" asp-action="Index" class="btn btn-primary btn-lg px-5 me-3">
+                            <i class="fas fa-redo me-2"></i>Nueva Predicción
+                        </a>
+                        <a asp-controller="PredictorModo" asp-action="Index" class="btn btn-secondary btn-lg px-5">
+                            <i class="fas fa-cogs me-2"></i>Cambiar Modo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <!-- Error -->
+            <div class="card shadow-lg">
+                <div class="card-header bg-danger text-white text-center">
+                    <h3><i class="fas fa-exclamation-triangle me-2"></i>¡Ups! Algo salió mal</h3>
+                </div>
+                <div class="card-body p-4 text-center">
+                    <div class="alert alert-danger">
+                        <i class="fas fa-times-circle fa-2x mb-3"></i>
+                        <h5>@Model.ErrorMessage</h5>
+                    </div>
+                    
+                    <a asp-controller="Predictor" asp-action="Index" class="btn btn-primary btn-lg">
+                        <i class="fas fa-arrow-left me-2"></i>Volver a Intentar
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

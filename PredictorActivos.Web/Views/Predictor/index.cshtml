@@ -1,0 +1,159 @@
+﻿@model PredictorActivos.ViewModel.ActivoDataViewModel
+@{
+    ViewData["Title"] = "PREDAYTOR";
+}
+
+<div class="row">
+    <h1 class="text-center">Predictor de Activos</h1>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-10">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h3><i class="fas fa-chart-line me-2"></i>Ingresa los Datos del Activo</h3>
+                <p class="mb-0">20 datos históricos requeridos</p>
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Index" method="post" id="predictionForm">
+                    <div asp-validation-summary="All" class="alert alert-danger" style="display: none;"></div>
+                    
+                    <!-- Toggle para método de entrada -->
+                    <div class="alert alert-info mb-4">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="inputToggle" 
+                                   asp-for="UsoIndividualInput" onchange="toggleInputMethod()">
+                            <label class="form-check-label fw-bold" for="inputToggle">
+                                <i class="fas fa-toggle-off me-2" id="toggleIcon"></i>
+                                Usar campos individuales en lugar de CSV
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Método CSV -->
+                    <div id="csvInput">
+                        <div class="mb-3">
+                            <label asp-for="Data" class="form-label fw-bold">
+                                <i class="fas fa-file-csv me-2"></i>Datos en Formato CSV
+                            </label>
+                            <div class="form-text mb-2">
+                                <strong>Formato:</strong> fecha, valor (Ejemplo: 2025-05-01, 150.35)<br>
+                                <strong>Importante:</strong> Exactamente 20 líneas
+                            </div>
+                            <textarea asp-for="Data" class="form-control" rows="12" 
+                                    placeholder="2025-05-01, 150.35&#10;2025-05-02, 152.10&#10;2025-05-03, 148.75&#10;2025-05-04, 151.20&#10;2025-05-05, 149.85&#10;2025-05-06, 153.40&#10;2025-05-07, 152.15&#10;2025-05-08, 154.80&#10;2025-05-09, 156.25&#10;2025-05-10, 155.90&#10;...&#10;(Continúa hasta completar 20 líneas)"></textarea>
+                            <span asp-validation-for="Data" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!-- Método de campos individuales -->
+                    <div id="individualInputs" style="display: none;">
+                        <h5 class="mb-3"><i class="fas fa-list-ol me-2"></i>Entrada Individual (20 días)</h5>
+                        <div class="row">
+                            @for (int i = 0; i < 20; i++)
+                            {
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <div class="card border">
+                                        <div class="card-body p-3">
+                                            <h6 class="card-title text-primary mb-2">Día @(i + 1)</h6>
+                                            <div class="mb-2">
+                                                <label class="form-label small">Fecha:</label>
+                                                <input type="date" class="form-control form-control-sm" 
+                                                       asp-for="IndividualInput[i].Fecha" />
+                                            </div>
+                                            <div>
+                                                <label class="form-label small">Valor:</label>
+                                                <input type="number" step="0.01" class="form-control form-control-sm" 
+                                                       asp-for="IndividualInput[i].Valor" placeholder="0.00" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                            <i class="fas fa-calculator me-2"></i>
+                            Calcular Predicción
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/Predictor/index_predictor.css" asp-append-version="true"/>
+}
+
+@section Scripts{
+    <script src="~/js/Predictor/index_predictor.js" asp-append-version="true"></script>
+    <script>
+        function toggleInputMethod() {
+            const useIndividual = document.getElementById('inputToggle').checked;
+            const csvInput = document.getElementById('csvInput');
+            const individualInputs = document.getElementById('individualInputs');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (useIndividual) {
+                csvInput.style.display = 'none';
+                individualInputs.style.display = 'block';
+                toggleIcon.className = 'fas fa-toggle-on me-2';
+            } else {
+                csvInput.style.display = 'block';
+                individualInputs.style.display = 'none';
+                toggleIcon.className = 'fas fa-toggle-off me-2';
+            }
+        }
+
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            const useIndividual = document.getElementById('inputToggle').checked;
+            
+            if (useIndividual) {
+                let validEntries = 0;
+                const dateInputs = document.querySelectorAll('input[type="date"]');
+                const valueInputs = document.querySelectorAll('input[type="number"]');
+                
+                for (let i = 0; i < dateInputs.length; i++) {
+                    if (dateInputs[i].value && valueInputs[i].value && parseFloat(valueInputs[i].value) > 0) {
+                        validEntries++;
+                    }
+                }
+                
+                if (validEntries !== 20) {
+                    e.preventDefault();
+                    alert(`Se requieren exactamente 20 entradas válidas. Actualmente tienes: ${validEntries}`);
+                    return;
+                }
+            } else {
+                const csvData = document.querySelector('textarea[name="Data"]').value.trim();
+                if (!csvData) {
+                    e.preventDefault();
+                    alert('Debes ingresar los datos en formato CSV.');
+                    return;
+                }
+                
+                const lines = csvData.split('\n').filter(line => line.trim());
+                if (lines.length !== 20) {
+                    e.preventDefault();
+                    alert(`Se requieren exactamente 20 líneas de datos. Tienes: ${lines.length}`);
+                    return;
+                }
+            }
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Calculando...';
+            submitBtn.disabled = true;
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const validationSummary = document.querySelector('[asp-validation-summary]');
+            if (validationSummary && validationSummary.innerHTML.trim()) {
+                validationSummary.style.display = 'block';
+            }
+        });
+    </script>
+}

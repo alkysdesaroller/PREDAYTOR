@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "PredictorActivos.Web/1.0.0": {
+        "dependencies": {
+          "PredictorActivos.BusinessLogic": "1.0.0"
+        },
+        "runtime": {
+          "PredictorActivos.Web.dll": {}
+        }
+      },
+      "PredictorActivos.BusinessLogic/1.0.0": {
+        "runtime": {
+          "PredictorActivos.BusinessLogic.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PredictorActivos.Web/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PredictorActivos.BusinessLogic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
