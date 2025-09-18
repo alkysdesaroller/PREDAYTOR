@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PredictorActivos.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c3b35fe93b43950f365cf611f18f1c4cc6806e5")]
 [assembly: System.Reflection.AssemblyProductAttribute("PredictorActivos.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PredictorActivos.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
