@@ -112,8 +112,8 @@ PredictorActivos/
 
 1. **Clonar el repositorio:**
 ```bash
-git clone https://github.com/tu-usuario/predaytor.git
-cd predaytor
+git clone https://github.com/alkysdesaroller/PREDAYTOR.git
+cd PREDAYTOR
 ```
 
 2. **Restaurar dependencias:**
@@ -354,9 +354,9 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 
 ## 👨‍💻 Desarrollado por
 
-**ITLA** - Instituto Tecnológico de Las Américas
+**Albin Lopez** - Desarrollador De Software
 - Proyecto académico 2025
-- Curso: Desarrollo de Aplicaciones Web con .NET
+- Curso: Programacion III
 
 ## 📞 Soporte
 
