@@ -95,4 +95,9 @@ C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\
 C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\net9.0\compressed\0kisalnl7e-n4jdbfefcw.gz
 C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\net9.0\compressed\ocv6b81p41-n4jdbfefcw.gz
 C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\net9.0\compressed\3k4uatzyft-essab55aw1.gz
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\net9.0\PredictorActivos.Web.sourcelink.json
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.Web\obj\Debug\net9.0\compressed\9squ49ru5b-3r8b2a0bt1.gz

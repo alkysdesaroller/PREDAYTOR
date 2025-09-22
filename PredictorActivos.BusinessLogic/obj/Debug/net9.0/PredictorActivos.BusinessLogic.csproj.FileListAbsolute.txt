@@ -9,3 +9,4 @@ C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\
 C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\refint\PredictorActivos.BusinessLogic.dll
 C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\PredictorActivos.BusinessLogic.pdb
 C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\ref\PredictorActivos.BusinessLogic.dll
+C:\Users\alna7\OneDrive\Desktop\PredictorActivos\PredictorActivos.BusinessLogic\obj\Debug\net9.0\PredictorActivos.BusinessLogic.sourcelink.json

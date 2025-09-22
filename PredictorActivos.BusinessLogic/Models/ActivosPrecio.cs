@@ -1,4 +1,4 @@
-﻿namespace PredictorActivos.Models;
+﻿namespace PredictorActivos.BusinessLogic.Models;
 
 public class ActivosPrecio
 {

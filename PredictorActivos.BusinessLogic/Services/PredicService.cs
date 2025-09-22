@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using PredictorActivos.BusinessLogic.Models;
 using PredictorActivos.Models.DTO;
 using PredictorActivos.Models.Enums;
 using PredictorActivos.Models.Strategy;

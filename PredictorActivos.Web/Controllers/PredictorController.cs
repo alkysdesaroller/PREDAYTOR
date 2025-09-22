@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PredictorActivos.BusinessLogic.Models;
 using PredictorActivos.Models;
 using PredictorActivos.Models.DTO;
 using PredictorActivos.Models.Services;

@@ -1,4 +1,5 @@
-﻿using PredictorActivos.Models.Enums;
+﻿using PredictorActivos.BusinessLogic.Models;
+using PredictorActivos.Models.Enums;
 
 namespace PredictorActivos.Models.DTO;
 
